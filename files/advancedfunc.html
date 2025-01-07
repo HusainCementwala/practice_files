@@ -12,22 +12,22 @@
 
 <script>
 
+const array = ['make dinner','wash dishes','watch youtube'];
 
-   /* function run(param){
-    param();
+array.forEach(function(value,index){
 
-    }
+  if(value === 'make dinner'){
 
-    run(function(){
-      console.log('hejnfir');
-    });*/
+    return;  //end the whole function early , same as continue in a FOR LOOP
+  }
+  console.log(index);
+  console.log(value);
+});
 
 
-    setTimeout(
-      function(){
-        for(let i=1;i<=5;i++){
-      console.log("timeout")
-    }},1000);
-  
+
+
+
+
 </script>
 </html>
