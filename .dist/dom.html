@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+<body>
+  
+
+<input placeholder="Name" class="js-name" onkeydown="printOnKey(event);">
+<button onclick="printName();">Submit</button>
+<p class="outputName"></p>
+
+<input placeholder="onUpKey" class="js-onKey" onkeyup="printUp(event);">
+<p class="onKey"></p>
+
+<input placeholder="onDownKey" class="js-onKeyDown" onkeyup="printDown(event);">
+<p class="onKeyDown"></p>
+
+
+<script>
+
+
+function printOnKey(event){
+  console.log(event.key);
+
+  if(event.key === 'Enter'){
+    printName();
+  }
+}
+
+function printDown(event){
+
+const downElement = document.querySelector('.js-onKeyDown');
+
+document.querySelector('.onKeyDown')
+.innerHTML = downElement.value;
+
+}
+
+
+function printUp(event){
+
+const name = document.querySelector('.js-onKey');
+
+
+document.querySelector('.onKey')
+.innerHTML = name.value ;
+
+}
+
+
+function printName(){
+const nameInput = document.querySelector('.js-name');
+let name = nameInput.value;
+  document.querySelector('.outputName')
+  .innerHTML = `${name} is the fucking best`;
+}
+ 
+
+
+
+</script>
+
+
+</body>
+</html>

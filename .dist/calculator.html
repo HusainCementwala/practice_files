@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <p class="js-calciOutput"></p>
+  <p>
+<button onclick="
+ updateCalculation('1');
+
+  " >1</button>
+<button
+onclick="
+  updateCalculation('2');
+
+  " >2</button>
+
+<button
+onclick="
+  updateCalculation('3');
+
+  " 
+>3</button>
+</p>
+<!--*******************************************************-->
+
+<p>
+<button onclick="
+  updateCalculation('4');
+
+  " >4</button>
+<button
+onclick="
+ updateCalculation('5');
+
+  " >5</button>
+
+<button
+onclick="
+  updateCalculation('6');
+
+  " 
+>6</button>
+
+
+</p>
+
+<!--*******************************************************-->
+<p>
+<button
+
+onclick="
+  updateCalculation('+');
+
+  " >+</button>
+
+<button
+
+onclick="
+  updateCalculation('-');
+
+  " >-</button>
+
+<button
+
+onclick="
+  updateCalculation('*');
+
+  " >*</button>
+  <button
+
+  onclick="
+    updateCalculation('/');
+  
+    " >/</button>
+</p>
+
+<button
+onclick="
+  updateCalculation('0');
+  " >0</button>
+
+
+<button
+onclick="
+calculation = eval(calculation);
+displayCalculation();"
+>=</button>
+<!----important fucntion for delete here-->
+
+
+<button
+onclick="
+calculation = calculation + ''; //coverts it to string to be deleted digit by digit
+calculation = calculation.slice(0,calculation.length-1);
+displayCalculation();
+" >DELETE</button>
+
+
+<button
+onclick="
+calculation = '';
+displayCalculation();
+localStorage.removeItem('calculation');
+">reset</button>
+
+
+
+
+
+
+<script>
+
+let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
+displayCalculation();
+
+
+function updateCalculation(value){
+  calculation += value;
+  displayCalculation();
+  localStorage.setItem('calculation', JSON.stringify(calculation));
+}
+
+
+
+function displayCalculation()
+{
+document.querySelector('.js-calciOutput')
+.innerHTML = `${calculation}`;
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions</title>
+</head>
+<body>
+  
+<button
+onclick="
+convertTemp(100,'F');
+
+">to celsius</button>
+
+<button
+onclick="
+convertTemp(100,'C');
+">to fahrenheit</button>
+
+  <script>
+function convertTemp(num,name){
+
+if(name === 'F')
+{
+  let ans = toCelsius(num);
+
+  alert(`the temp is ${ans}`);
+
+
+}
+
+else if(name === 'C')
+{
+
+  let ans = toFahren(num);
+
+  alert(`the temp is ${ans}`);
+}
+}
+
+
+
+function toCelsius(num)
+{
+ let result=(`${((num - 32)*5/9).toFixed(2)} degree Celcius`);
+
+return result;
+
+}
+
+
+function toFahren(num)
+{
+ let result=(`${((num*9/5)+32).toFixed(2)} degree Fahrenheit`);
+
+return result;
+
+}
+
+
+
+   
+  </script>
+</body>
+</html>

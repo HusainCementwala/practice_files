@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Project</title>
+
+<style>
+ body{
+
+  font-family: Arial, Helvetica, sans-serif;
+    
+ }
+
+
+.js-sub-button{
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.is-Subscribed{
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+
+.cost-input{
+
+  font-size: 15px;
+  padding: 10px;
+  
+}
+
+.calculate-button{
+  border: none;
+  font-size: 15px;
+  padding: 12px 10px;
+  color: white;
+  background-color: rgb(20, 150, 20);
+  cursor: pointer;
+}
+
+
+.error-message{
+
+  color: red;
+}
+
+
+</style>
+
+
+</head>
+<bod>
+ 
+<p>Youtube Subscribe Button</p>
+
+<button onclick="subscribe()" class="js-sub-button">Subscribe</button>
+  
+<p>Amazon Shipping Calculator</p>
+<p>Orders under $40 = +$10 shipping</p>
+<p>Orders over $40 = FREE shipping</p>
+
+<input placeholder="Cost of Order" 
+class="js-price cost-input" 
+onkeydown="handleCostKeydown(event);"> 
+<button class="calculate-button" onclick="calculate()
+">Calculate</button>
+ 
+<p class="display"></p>
+
+
+<script>
+  
+function handleCostKeydown(event){
+
+  console.log(event.key);
+  if(event.key === 'Enter' || event.key === 'ArrowRight'){
+  calculate();
+
+  }
+}
+
+
+
+function calculate(){
+
+  const priceValue =document.querySelector('.js-price');
+  let cost = Number(priceValue.value);
+  
+  if(cost < 40 && cost > 0){
+  cost = cost + 10; 
+  document.querySelector('.display').innerHTML = `$${cost}`;
+  }
+
+  else if(isNaN(cost)){
+    const error = document.querySelector('.display');
+    error.classList.add('error-message');
+    error.innerHTML = `Nah Dawg, numbers only!`;
+  }
+
+  else if(cost <= 0){
+    const error = document.querySelector('.display');
+    error.classList.add('error-message');
+    error.innerHTML = `Error: cost cannot be less than or $0`;
+  }
+
+  else{
+   document.querySelector('.display').innerHTML = `$${cost}, No extra charge baby!`;
+  }
+  
+
+}
+
+
+
+
+function subscribe(){
+/* const buttonElement = document.querySelector('.js-sub-button');
+ if(buttonElement.innerHTML === 'Subscribe'){
+ buttonElement.innerHTML = 'Subscribed'
+ }
+ else{
+  buttonElement.innerHTML = 'Subscribe';
+ }
+} */
+  const buttonElement = document.querySelector('.js-sub-button');
+
+if(buttonElement.innerText === 'Subscribe'){
+
+  buttonElement.innerHTML = 'Subscribed';
+  buttonElement.classList.add('is-Subscribed');
+}
+
+else{
+
+  buttonElement.innerHTML = 'Subscribe';
+  buttonElement.classList.remove('is-Subscribed');
+}
+
+
+}
+
+
+</script>
+</body>
+</html>

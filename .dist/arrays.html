@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice
+
+  </title>
+</head>
+<body>
+
+
+
+
+
+
+  
+  <script>
+
+const arr = [3,5,4,-4,-1,55,0];
+const dabba = [4,5,6];
+
+
+
+
+
+/***********************************************************/
+
+
+const stringy = ['green', 'red', 'blue', 'red'];
+
+//unique(stringy);
+
+
+function unique(array){
+  const  result = [];
+
+  for(let i=0 ; i<array.length ;i++){
+    const value = array[i];
+
+   
+   if(findIndex(result,value)=== -1){ //another function called
+    result.push(value);
+   }
+  }
+
+  console.log(result);
+}
+
+
+
+function findIndex(array,word){
+
+for(let i=0 ;i<array.length ;i++){
+
+  if(array[i]=== word){
+
+    return i;
+  }
+
+}
+return -1;
+
+}
+
+/************************************************************/
+
+
+const a = [ 10, 20, 20, 30, 40, 50, 50 ];
+const b = ['green', 'red', 'blue', 'red'];
+//onlyUnique(b);
+
+
+function onlyUnique(array){
+
+  let s = new Set(array);
+  let a1 = [...s];
+  console.log(a1)
+}
+
+
+
+/***************************************************************/
+
+
+//FIZZBUZZ PROBLEM//
+/*
+If no divisible by 3 = 'Fizz'
+If no is divisible by 5 = 'Buzz'
+if no is divisible by 3 and 5 = 'FizzBuzz'
+if none = no itself
+*/
+
+//fizzBuzz();
+function fizzBuzz(){
+
+  for(let i=1 ; i<=20 ;i++){
+
+  if(i%3===0 && i%5===0){
+
+    console.log('FizzBuzz');
+  }
+
+  else if(i % 3 === 0){
+
+    console.log('Fizz');
+  }
+
+  else if(i % 5===0){
+
+    console.log('Buzz');
+  }
+
+  else{
+
+    console.log(i);
+  }
+
+  }
+}
+
+/**********************************************************/
+
+
+//removeEgg(['egg','apple','egg','egg','ham']);
+
+
+function removeEgg(array){
+
+const arraycopy = array.slice();
+const array1 = arraycopy.reverse();
+let eggCount = 0; 
+let newArray=[];
+
+
+
+ for(let i=0;i<array1.length ;i++){
+  
+ if(array1[i] === 'egg' && eggCount < 2){
+
+  eggCount++;
+  continue;
+ }
+ else{
+  newArray.push(array1[i]);
+ }
+ }
+ newArray = newArray.reverse();
+ console.log(newArray);
+}
+
+
+
+/**************************************************/
+
+
+const string = ['search','fuck','search','this'];
+//isPresent(string,'this');
+//isPresent(string,'search');
+
+function isPresent(array,string){
+
+
+  for(let i=0; i<array.length;i++){
+  const value = array[i];
+  
+  if(value === string){
+    
+    console.log(i);
+    return;
+    
+  } 
+  }
+
+  console.log('-1');
+
+}
+
+
+
+/*************************************************/
+
+
+//console.log(countWords(['fuck','nigga','nigga','fuck','fuck','nigga','nigga']));
+
+function countWords(words) {
+  const result = {}; // An empty object to store word counts
+
+  for (let i = 0; i < words.length; i++) { // Loop through each word in the array
+    const word = words[i]; // Get the current word
+
+    if (!result[word]) { // Check if the word does NOT exist as a key in the `result` object
+      result[word] = 1; // If the word is not in `result`, add it as a key with a value of 1
+    } else { // If the word already exists in `result`
+      result[word]++; // Increment the count for that word by 1
+    }
+  }
+
+  return result; // After the loop, return the `result` object containing word counts
+}
+
+/************************************************/
+
+//addNumArray(arr,dabba);
+
+function addNumArray(array1,array2){
+const box1 = array1;
+const box2 =array2;
+const totalArray =[];
+if(box1.length != box2.length){
+
+  console.log('the two arrays cannot be added');
+  return ;
+}
+
+for(let i=0 ; i<box1.length  ;i++){
+  totalArray[i] = box1[i]+box2[i];
+}
+console.log(totalArray);
+}
+
+/****************************************************/
+
+//countPositive(arr);
+
+function countPositive(array){
+const box = array;
+let countpos = 0;
+let countneg = 0;
+let countzero = 0;
+
+for (let i=0; i<=box.length; i++){
+  if(box[i]>0){
+    countpos++;
+  }  
+  else if(box[i]<0){
+    countneg++;
+  }
+  else if(box[i]===0){
+    countzero++;
+  }
+}
+console.log(`number of positive elements:${countpos}
+number of negative elements:${countneg}
+number of 0's: ${countzero}`);
+}
+
+
+
+/***********************************************************/
+
+//console.log(minMax(arr));
+
+function minMax(array){
+  const result = {
+    min: null,
+    max: null
+    };
+
+for(let i=0; i<array.length ;i++){
+  if(result.min > array[i] || result.min === null){ //If the min is null OR the value is less than the min, update the min.
+    result.min = array[i];
+  }
+  if(result.max < array[i] || result.max === null){ //If the max is null OR the value is greater than the max, update the max.
+    result.max= array[i];
+  }
+}
+/*We have to use 2 if-statements above instead of an if-else statement. This makes sure both the min and max are set if they are null.*/
+return result;
+}
+
+/**********************************************************/
+
+
+
+  </script>
+</body>
+</html>
