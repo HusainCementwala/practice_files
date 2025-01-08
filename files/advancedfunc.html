@@ -7,6 +7,12 @@
 </head>
 <body>
   
+<button onclick="change();" class="js-start">Start</button>
+<p></p>
+
+<button onclick="changeText();" class="js-add-button">Add to cart</button>
+<p class="js-output"></p>
+
 </body>
 
 
@@ -25,6 +31,52 @@ array.forEach(function(value,index){
 });
 
 
+
+function change() {
+  const buttonStart = document.querySelector('.js-start');
+
+  if(buttonStart.innerText === 'Finished'){
+
+  buttonStart.innerHTML = 'Start';
+  return;
+  }
+  buttonStart.innerHTML = 'Loading...'
+  
+  setTimeout(function () {
+    if (buttonStart.innerText === 'Loading...') {
+      buttonStart.innerHTML = 'Finished';
+    } else  {
+      buttonStart.innerHTML = 'Start';
+    }
+  }, 1000);
+  }
+
+
+
+  function changeText(){
+
+  const changeBut = document.querySelector('.js-add-button');
+  const changeText = document.querySelector('.js-output');
+
+
+
+  if(changeBut.innerText === 'Add to cart'){
+  changeBut.innerHTML = 'Added';
+  changeText.innerHTML = 'Item Added';
+  }
+  else{
+
+    changeBut.innerHTML = 'Add to cart';
+  }
+
+  
+
+  setTimeout(function(){
+   
+    changeText.innerHTML = '';}
+  ,3000);
+
+  }
 
 
 
