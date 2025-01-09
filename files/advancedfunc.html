@@ -7,20 +7,37 @@
 </head>
 <body>
   
-<button onclick="change();" class="js-start">Start</button>
+<button  class="js-start">Start</button>
 <p></p>
 
-<button onclick="changeText();" class="js-add-button">Add to cart</button>
+<button  class="js-add-button">Add to cart</button>
 <p class="js-output"></p>
+
+<button  class="js-add">ADD</button>
+<button class="js-remove">Remove</button>
+
+
+
 
 </body>
 
 
+
+
+
+
+
+
 <script>
+
+
+
+
+
 
 const array = ['make dinner','wash dishes','watch youtube'];
 
-array.forEach(function(value,index){
+array.forEach((value,index)=>{
 
   if(value === 'make dinner'){
 
@@ -31,6 +48,10 @@ array.forEach(function(value,index){
 });
 
 
+
+document.querySelector('.js-start').addEventListener('click',()=>{
+change();
+});
 
 function change() {
   const buttonStart = document.querySelector('.js-start');
@@ -53,30 +74,169 @@ function change() {
 
 
 
+let timeoutId;
+
+document.querySelector('.js-add-button').addEventListener('click',()=>{
+  changeText();
+});
+
+
+
+
+
   function changeText(){
 
   const changeBut = document.querySelector('.js-add-button');
   const changeText = document.querySelector('.js-output');
-
-
 
   if(changeBut.innerText === 'Add to cart'){
   changeBut.innerHTML = 'Added';
   changeText.innerHTML = 'Item Added';
   }
   else{
-
     changeBut.innerHTML = 'Add to cart';
   }
-
-  
-
-  setTimeout(function(){
-   
-    changeText.innerHTML = '';}
-  ,3000);
-
+  clearTimeout(timeoutId)
+  timeoutId = setTimeout(function(){
+   changeText.innerHTML = '';}
+ ,2000);
   }
+
+
+
+
+
+let messages = 2;
+let intervalId;
+let isDisplayingNotification;
+
+
+displayNotification();
+
+document.querySelector('.js-add').addEventListener('click',()=>{
+  messages++;
+  displayNotification();
+})
+
+document.querySelector('.js-remove').addEventListener('click',()=>{
+
+if(messages >0){
+  messages--;
+}
+if(messages ===0){
+
+  stopNotification();
+}
+});
+
+
+
+function displayNotification(){
+  if(isDisplayingNotification){
+    return;
+  }
+isDisplayingNotification = true;
+
+intervalId = setInterval(function(){ //taking interval id so that it can be cleared in next function 
+
+if(document.title === 'Advanced'){
+  document.title = `(${messages}) New Messages`;
+}
+else{
+  document.title = 'Advanced';
+}
+},1000);
+}
+
+
+function stopNotification(){
+  isDisplayingNotification = false;
+  clearInterval(intervalId);
+  document.title = 'Advanced';
+}
+
+
+
+
+const arrowFucntion = (param,param2) => {
+  console.log('hello');
+  return 5;
+};
+const object2 = {
+  method: ()=>{
+  },
+  method(){
+  }
+};
+const arr = [1,-1,-2,-3,5];
+
+
+
+
+
+console.log(arr.filter((value,index)=>{
+return value  >= 0;
+}));
+
+console.log(arr.map(value=>value*5));
+
+
+const multiply = (value1,value2) => value1*value2;
+console.log(multiply(33,2));
+
+
+function countPositive(numbers){
+  let positive=0;
+numbers.forEach((value)=>{  //using for each instaed of for loop
+  if(value>0){
+    positive++;
+  }
+});
+console.log(positive);
+}
+countPositive([1,-2,-3,-4,5,6]);
+
+
+
+
+
+function addNum(array,num){
+  return array.map((value)=> value + num);
+}
+console.log(addNum([1,2,3],2));
+
+
+
+
+function removeEgg(array){
+  let eggCount = 0;
+return array.filter((value)=>{
+
+  if(value === 'eggs' && eggCount<2){
+    eggCount++;
+    return false;
+  }
+  return true;
+})
+}
+
+console.log(removeEgg(['bacon','eggs','ham','pancakes','eggs','eggs']));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
